@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,7 +24,7 @@
                             bg: '#0b1120',
                             card: '#151f32',
                             border: '#24324d',
-                            hover: '#1e2d48'
+                            hover: '#1e2d47'
                         }
                     }
                 }
@@ -33,9 +32,9 @@
         }
     </script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
         * {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             -webkit-tap-highlight-color: transparent;
         }
         /* Custom scrollbar */
@@ -50,48 +49,44 @@
             background: #24324d;
             border-radius: 9999px;
         }
-        .pulse-subtle {
+        ::-webkit-scrollbar-thumb:hover {
+            background: #0891b2;
+        }
+        .pulse-border {
             animation: pulse-border 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
         }
         @keyframes pulse-border {
-            0%, 100% { border-color: rgba(6, 182, 212, 0.3); }
+            0%, 100% { border-color: rgba(6, 182, 212, 0.2); }
             50% { border-color: rgba(6, 182, 212, 0.8); }
         }
     </style>
 </head>
-<body class="bg-[#0b1120] text-slate-100 min-h-screen flex flex-col pb-24 md:pb-8">
+<body class="bg-dark-bg text-slate-100 min-h-screen flex flex-col antialiased selection:bg-cyan-500 selection:text-white pb-16">
 
-    <!-- Toast Notification Banner -->
-    <div id="toast" class="fixed top-4 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 opacity-0 pointer-events-none transform -translate-y-4 max-w-sm w-11/12">
-        <div id="toast-body" class="p-3.5 rounded-xl shadow-2xl flex items-center gap-3 border text-sm font-medium backdrop-blur-md">
-            <i id="toast-icon" data-lucide="info" class="w-5 h-5 flex-shrink-0"></i>
-            <span id="toast-message" class="flex-1">Notification</span>
-        </div>
-    </div>
-
-    <!-- Header / Profile Section -->
-    <header class="border-b border-[#24324d] bg-[#151f32]/80 backdrop-blur sticky top-0 z-40 px-4 py-3">
-        <div class="max-w-4xl mx-auto flex items-center justify-between">
+    <!-- Top Navigation Header -->
+    <header class="sticky top-0 z-40 bg-dark-card/90 backdrop-blur-md border-b border-dark-border px-4 py-3 sm:px-6">
+        <div class="max-w-6xl mx-auto flex items-center justify-between gap-2">
+            <!-- Brand -->
             <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-600 to-teal-400 flex items-center justify-center font-black text-white text-lg shadow-lg shadow-cyan-500/20">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-600 to-teal-400 flex items-center justify-center font-bold text-white shadow-lg shadow-cyan-950/40 text-lg">
                     E
                 </div>
                 <div>
                     <div class="flex items-center gap-2">
-                        <h1 class="font-bold text-base sm:text-lg tracking-tight">EduScore</h1>
-                        <span class="text-[10px] bg-cyan-950 text-cyan-300 px-2 py-0.5 rounded-full font-semibold border border-cyan-800">ACADEMIC</span>
+                        <span class="font-bold text-base tracking-tight text-white">EduScore</span>
+                        <span class="text-[10px] font-semibold uppercase tracking-wider bg-cyan-950 text-cyan-300 border border-cyan-800/60 px-2 py-0.5 rounded-full">Academic</span>
                     </div>
-                    <p class="text-xs text-slate-400">GVPCDPGC(A) • CSE (AI&ML)</p>
+                    <p class="text-xs text-slate-400 hidden sm:block">GVPCDPGC(A) • CSE (AI&ML)</p>
                 </div>
             </div>
 
-            <!-- Profile Info pill -->
-            <div class="flex items-center gap-3 bg-[#0b1120] border border-[#24324d] rounded-2xl px-3 py-1.5">
+            <!-- Student Profile Summary -->
+            <div class="flex items-center gap-3">
                 <div class="text-right">
-                    <p class="text-xs font-semibold text-slate-200" id="profile-name">D. Bharat</p>
-                    <p class="text-[10px] text-slate-400 font-mono" id="profile-roll">5231412069</p>
+                    <div class="text-sm font-semibold text-slate-200">D. Bharat</div>
+                    <div class="text-xs text-cyan-400 font-mono tracking-tight">5241412017</div>
                 </div>
-                <div class="w-8 h-8 rounded-full bg-cyan-900/60 border border-cyan-500/40 flex items-center justify-center text-cyan-300 font-bold text-xs">
+                <div class="w-9 h-9 rounded-full bg-slate-800 border border-cyan-700/50 flex items-center justify-center font-bold text-xs text-cyan-300">
                     DB
                 </div>
             </div>
@@ -99,238 +94,159 @@
     </header>
 
     <!-- Main Container -->
-    <main class="max-w-4xl mx-auto w-full px-4 pt-4 flex-1">
-        
-        <!-- Live Academic Wallet & Rep Dashboard -->
-        <section class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-5">
-            <!-- Karma Tokens Balance -->
-            <div class="bg-[#151f32] p-3.5 rounded-2xl border border-[#24324d] shadow-sm">
+    <main class="max-w-6xl mx-auto w-full px-4 sm:px-6 pt-6 flex-1 flex flex-col gap-6">
+
+        <!-- Metrics Dashboard Cards -->
+        <section class="grid grid-cols-2 md:grid-cols-4 gap-3.5">
+            <!-- Balance Card -->
+            <div class="bg-dark-card border border-dark-border rounded-2xl p-4 flex flex-col justify-between hover:border-cyan-800/50 transition">
                 <div class="flex items-center justify-between text-slate-400 mb-1">
                     <span class="text-xs font-medium">Karma Tokens (KT)</span>
                     <i data-lucide="coins" class="w-4 h-4 text-amber-400"></i>
                 </div>
-                <div class="flex items-baseline gap-1.5">
-                    <span id="wallet-balance" class="text-2xl font-bold text-amber-400">350</span>
-                    <span class="text-xs text-amber-400/80 font-semibold">KT</span>
+                <div>
+                    <div class="text-2xl sm:text-3xl font-extrabold text-amber-300 tracking-tight flex items-baseline gap-1">
+                        350 <span class="text-xs font-semibold text-amber-500">KT</span>
+                    </div>
+                    <p class="text-[11px] text-slate-400 mt-0.5">Liquid balance</p>
                 </div>
-                <p class="text-[10px] text-slate-400 mt-1">Liquid balance</p>
             </div>
 
-            <!-- Escrow Staked Pool -->
-            <div class="bg-[#151f32] p-3.5 rounded-2xl border border-[#24324d] shadow-sm">
+            <!-- Escrow Card -->
+            <div class="bg-dark-card border border-dark-border rounded-2xl p-4 flex flex-col justify-between hover:border-cyan-800/50 transition">
                 <div class="flex items-center justify-between text-slate-400 mb-1">
                     <span class="text-xs font-medium">Tokens in Escrow</span>
                     <i data-lucide="lock" class="w-4 h-4 text-cyan-400"></i>
                 </div>
-                <div class="flex items-baseline gap-1.5">
-                    <span id="escrow-balance" class="text-2xl font-bold text-cyan-400">50</span>
-                    <span class="text-xs text-cyan-400/80 font-semibold">KT</span>
+                <div>
+                    <div class="text-2xl sm:text-3xl font-extrabold text-cyan-300 tracking-tight flex items-baseline gap-1">
+                        50 <span class="text-xs font-semibold text-cyan-500">KT</span>
+                    </div>
+                    <p class="text-[11px] text-slate-400 mt-0.5">Pledged to deadlines</p>
                 </div>
-                <p class="text-[10px] text-slate-400 mt-1">Pledged to deadlines</p>
             </div>
 
-            <!-- Reputation Score -->
-            <div class="bg-[#151f32] p-3.5 rounded-2xl border border-[#24324d] shadow-sm">
+            <!-- Reputation Card -->
+            <div class="bg-dark-card border border-dark-border rounded-2xl p-4 flex flex-col justify-between hover:border-cyan-800/50 transition">
                 <div class="flex items-center justify-between text-slate-400 mb-1">
                     <span class="text-xs font-medium">Academic Rep</span>
                     <i data-lucide="award" class="w-4 h-4 text-emerald-400"></i>
                 </div>
-                <div class="flex items-baseline gap-1.5">
-                    <span id="reputation-score" class="text-2xl font-bold text-emerald-400">94%</span>
+                <div>
+                    <div class="text-2xl sm:text-3xl font-extrabold text-emerald-300 tracking-tight">
+                        94%
+                    </div>
+                    <p class="text-[11px] text-slate-400 mt-0.5">Completion rating</p>
                 </div>
-                <p class="text-[10px] text-slate-400 mt-1">Completion rating</p>
             </div>
 
-            <!-- Active Bets / Tasks -->
-            <div class="bg-[#151f32] p-3.5 rounded-2xl border border-[#24324d] shadow-sm">
+            <!-- Active Tasks Card -->
+            <div class="bg-dark-card border border-dark-border rounded-2xl p-4 flex flex-col justify-between hover:border-cyan-800/50 transition">
                 <div class="flex items-center justify-between text-slate-400 mb-1">
                     <span class="text-xs font-medium">Active Tasks</span>
-                    <i data-lucide="clock" class="w-4 h-4 text-purple-400"></i>
+                    <i data-lucide="clock" class="w-4 h-4 text-indigo-400"></i>
                 </div>
-                <div class="flex items-baseline gap-1.5">
-                    <span id="active-tasks-count" class="text-2xl font-bold text-purple-300">2</span>
-                    <span class="text-xs text-purple-400/80 font-semibold">in progress</span>
-                </div>
-                <p class="text-[10px] text-slate-400 mt-1">Milestones locked</p>
-            </div>
-        </section>
-
-        <!-- Quick Primary Action Buttons -->
-        <div class="flex flex-wrap sm:flex-nowrap gap-3 mb-6">
-            <button onclick="openCreateModal()" class="w-full sm:w-1/2 bg-gradient-to-r from-cyan-600 to-teal-600 hover:from-cyan-500 hover:to-teal-500 text-white font-semibold py-3 px-4 rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-cyan-950 transition active:scale-[0.98]">
-                <i data-lucide="plus-circle" class="w-5 h-5"></i>
-                <span>Create Academic Bet (Stake KT)</span>
-            </button>
-            <button onclick="switchTab('validator')" class="w-full sm:w-1/2 bg-[#151f32] hover:bg-[#1e2d48] border border-[#24324d] text-slate-200 font-semibold py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition active:scale-[0.98]">
-                <i data-lucide="user-check" class="w-5 h-5 text-cyan-400"></i>
-                <span>Peer Validator Review Queue</span>
-                <span id="validator-badge" class="bg-cyan-500/20 text-cyan-300 text-xs px-2 py-0.5 rounded-full font-bold ml-1">1</span>
-            </button>
-        </div>
-
-        <!-- Navigation Tabs -->
-        <div class="flex border-b border-[#24324d] mb-5 overflow-x-auto gap-2">
-            <button onclick="switchTab('my-tasks')" id="tab-my-tasks" class="tab-btn px-4 py-2.5 font-medium text-sm border-b-2 border-cyan-400 text-cyan-400 flex items-center gap-2 flex-shrink-0">
-                <i data-lucide="book-open" class="w-4 h-4"></i>
-                My Assignments & Bets
-            </button>
-            <button onclick="switchTab('validator')" id="tab-validator" class="tab-btn px-4 py-2.5 font-medium text-sm border-b-2 border-transparent text-slate-400 hover:text-slate-200 flex items-center gap-2 flex-shrink-0">
-                <i data-lucide="check-square" class="w-4 h-4"></i>
-                Peer Validator Panel
-            </button>
-            <button onclick="switchTab('ledger')" id="tab-ledger" class="tab-btn px-4 py-2.5 font-medium text-sm border-b-2 border-transparent text-slate-400 hover:text-slate-200 flex items-center gap-2 flex-shrink-0">
-                <i data-lucide="history" class="w-4 h-4"></i>
-                Karma Token Ledger
-            </button>
-        </div>
-
-        <!-- TAB CONTENT 1: My Assignments & Bets -->
-        <section id="section-my-tasks" class="space-y-4">
-            <div class="flex items-center justify-between mb-2">
-                <h2 class="text-sm font-semibold text-slate-300 uppercase tracking-wider">Your Active Commitments</h2>
-                <span class="text-xs text-slate-400">All submissions require Peer Approval</span>
-            </div>
-            
-            <div id="tasks-container" class="space-y-3.5">
-                <!-- Dynamically rendered tasks will appear here -->
-            </div>
-        </section>
-
-        <!-- TAB CONTENT 2: Peer Validator Review Queue -->
-        <section id="section-validator" class="space-y-4 hidden">
-            <div class="bg-cyan-950/30 border border-cyan-800/50 p-4 rounded-2xl flex items-start gap-3">
-                <i data-lucide="shield-check" class="w-6 h-6 text-cyan-400 flex-shrink-0 mt-0.5"></i>
                 <div>
-                    <h3 class="font-semibold text-sm text-cyan-200">Peer Validator Responsibility</h3>
-                    <p class="text-xs text-slate-300 mt-0.5 leading-relaxed">
-                        As a designated peer reviewer, verify the student's attached assignment PDF and description.
-                        <strong>Approving</strong> returns their pledged Karma Tokens + 15 KT bonus. <strong>Rejecting</strong> flags the bet for faculty dispute and deducts penalty tokens.
-                    </p>
-                </div>
-            </div>
-
-            <div id="validator-container" class="space-y-3.5">
-                <!-- Dynamically rendered peer validation queue -->
-            </div>
-        </section>
-
-        <!-- TAB CONTENT 3: Karma Token Ledger -->
-        <section id="section-ledger" class="space-y-4 hidden">
-            <div class="bg-[#151f32] rounded-2xl border border-[#24324d] overflow-hidden">
-                <div class="p-4 border-b border-[#24324d] flex items-center justify-between">
-                    <div>
-                        <h3 class="font-semibold text-sm">Institutional Token Ledger</h3>
-                        <p class="text-xs text-slate-400">Deterministic record of Karma Token transactions</p>
+                    <div class="text-2xl sm:text-3xl font-extrabold text-indigo-300 tracking-tight flex items-baseline gap-1">
+                        2 <span class="text-xs font-semibold text-slate-400">in progress</span>
                     </div>
-                    <span class="text-xs bg-slate-800 text-slate-300 font-mono px-2.5 py-1 rounded-lg border border-slate-700">SHA-256 Verified</span>
-                </div>
-                <div class="overflow-x-auto">
-                    <table class="w-full text-left text-xs">
-                        <thead class="bg-[#0b1120] text-slate-400 font-semibold border-b border-[#24324d]">
-                            <tr>
-                                <th class="p-3">Time</th>
-                                <th class="p-3">Action Type</th>
-                                <th class="p-3">Reference Task</th>
-                                <th class="p-3 text-right">Tokens (KT)</th>
-                                <th class="p-3">Status</th>
-                            </tr>
-                        </thead>
-                        <tbody id="ledger-rows" class="divide-y divide-[#24324d] font-mono text-slate-300">
-                            <!-- Dynamically generated ledger entries -->
-                        </tbody>
-                    </table>
+                    <p class="text-[11px] text-slate-400 mt-0.5">Milestones locked</p>
                 </div>
             </div>
         </section>
-    </main>
 
-    <!-- MODAL 1: Create Academic Bet -->
-    <div id="modal-create-bet" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm hidden flex items-center justify-center p-4">
-        <div class="bg-[#151f32] border border-[#24324d] rounded-2xl w-full max-w-lg max-h-[90vh] flex flex-col shadow-2xl overflow-hidden">
-            <div class="p-4 border-b border-[#24324d] flex items-center justify-between bg-[#111927]">
-                <div class="flex items-center gap-2">
-                    <i data-lucide="target" class="w-5 h-5 text-cyan-400"></i>
-                    <h3 class="font-bold text-base text-slate-100">Create Academic Bet</h3>
-                </div>
-                <button onclick="closeCreateModal()" class="text-slate-400 hover:text-white p-1 rounded-lg">
-                    <i data-lucide="x" class="w-5 h-5"></i>
+        <!-- Primary Action Callouts -->
+        <section class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+            <button onclick="alert('Stake setup modal opened: Choose deadline & pledge KT tokens to lock your commitment.')" class="w-full bg-gradient-to-r from-cyan-600 to-teal-500 hover:from-cyan-500 hover:to-teal-400 text-white font-semibold py-3.5 px-4 rounded-xl shadow-lg shadow-cyan-950/50 flex items-center justify-center gap-2 transition active:scale-[0.99]">
+                <i data-lucide="shield-check" class="w-5 h-5"></i>
+                Create Academic Bet (Stake KT)
+            </button>
+            <button onclick="alert('Opening validation portal for peer project submissions.')" class="w-full bg-dark-card hover:bg-dark-hover border border-dark-border text-slate-200 font-semibold py-3.5 px-4 rounded-xl flex items-center justify-center gap-2 transition active:scale-[0.99]">
+                <i data-lucide="check-square" class="w-5 h-5 text-cyan-400"></i>
+                Peer Validator Review Queue
+                <span class="bg-cyan-900 text-cyan-300 text-xs px-2 py-0.5 rounded-full ml-1">1</span>
+            </button>
+        </section>
+
+        <!-- Functional Views / Tabs -->
+        <section class="bg-dark-card border border-dark-border rounded-2xl overflow-hidden flex-1 flex flex-col">
+            <!-- Tab Headers -->
+            <div class="flex border-b border-dark-border bg-slate-900/60 overflow-x-auto text-sm">
+                <button class="py-3 px-5 text-cyan-400 border-b-2 border-cyan-400 font-semibold flex items-center gap-2 whitespace-nowrap">
+                    <i data-lucide="list-todo" class="w-4 h-4"></i> My Assignments & Bets
+                </button>
+                <button class="py-3 px-5 text-slate-400 hover:text-slate-200 font-medium flex items-center gap-2 whitespace-nowrap transition">
+                    <i data-lucide="scale" class="w-4 h-4"></i> Peer Validator Panel
+                </button>
+                <button class="py-3 px-5 text-slate-400 hover:text-slate-200 font-medium flex items-center gap-2 whitespace-nowrap transition">
+                    <i data-lucide="history" class="w-4 h-4"></i> Karma Token Ledger
                 </button>
             </div>
 
-            <form id="create-bet-form" onsubmit="handleCreateBet(event)" class="p-4 space-y-4 overflow-y-auto flex-1">
-                <!-- Assignment Title -->
-                <div>
-                    <label class="block text-xs font-semibold text-slate-300 mb-1">Assignment / Task Title *</label>
-                    <input type="text" id="bet-title" required placeholder="e.g. Implement SEMP2 UML Diagrams & SQLite Persistence" class="w-full bg-[#0b1120] border border-[#24324d] rounded-xl px-3.5 py-2.5 text-sm text-slate-100 focus:outline-none focus:border-cyan-500 transition">
+            <!-- Tab Content -->
+            <div class="p-4 sm:p-6 flex-1 flex flex-col gap-4">
+                <div class="flex items-center justify-between">
+                    <h2 class="text-sm font-semibold tracking-wider text-slate-400 uppercase">Your Active Commitments</h2>
+                    <span class="text-xs text-slate-400">All submissions require Peer Approval</span>
                 </div>
 
-                <!-- Course / Subject -->
-                <div>
-                    <label class="block text-xs font-semibold text-slate-300 mb-1">Subject / Course *</label>
-                    <select id="bet-course" class="w-full bg-[#0b1120] border border-[#24324d] rounded-xl px-3 py-2.5 text-sm text-slate-100 focus:outline-none focus:border-cyan-500 transition">
-                        <option value="CS-308: Software Engineering (SEMP)">CS-308: Software Engineering (SEMP)</option>
-                        <option value="CS-401: Deep Learning & AI">CS-401: Deep Learning & AI</option>
-                        <option value="CS-305: Database Management Systems">CS-305: Database Management Systems</option>
-                        <option value="CS-202: Data Structures & Algorithms">CS-202: Data Structures & Algorithms</option>
-                    </select>
-                </div>
-
-                <!-- Token Stake & Peer Validator row -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <div>
-                        <label class="block text-xs font-semibold text-slate-300 mb-1">
-                            Tokens to Stake (KT) * 
-                            <span class="text-[10px] text-amber-400 font-normal">(10 - 250 KT)</span>
-                        </label>
-                        <div class="relative">
-                            <input type="number" id="bet-stake" required min="10" max="250" value="50" class="w-full bg-[#0b1120] border border-[#24324d] rounded-xl px-3.5 py-2.5 text-sm text-amber-400 font-bold focus:outline-none focus:border-amber-500 transition">
-                            <span class="absolute right-3 top-2.5 text-xs text-slate-400 font-semibold">KT</span>
+                <!-- Assignment Card 1 -->
+                <div class="bg-slate-900/80 border border-dark-border hover:border-cyan-900 rounded-xl p-4 transition flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div class="space-y-1">
+                        <div class="flex items-center gap-2">
+                            <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-amber-950/70 border border-amber-800 text-amber-300">
+                                50 KT STAKED
+                            </span>
+                            <span class="text-xs text-slate-400 font-mono">CS-504 • DWM</span>
                         </div>
+                        <h3 class="font-semibold text-slate-100 text-base">Apriori Algorithm & FP-Tree Comparison Report</h3>
+                        <p class="text-xs text-slate-400">Target Deliverable: Implementation notebook + PDF Analysis summary</p>
                     </div>
-                    <div>
-                        <label class="block text-xs font-semibold text-slate-300 mb-1">Nominate Peer Validator *</label>
-                        <select id="bet-validator" class="w-full bg-[#0b1120] border border-[#24324d] rounded-xl px-3 py-2.5 text-sm text-slate-100 focus:outline-none focus:border-cyan-500 transition">
-                            <option value="G. Yaswanth (5231412068)">G. Yaswanth (5231412068)</option>
-                            <option value="B. Tarun Kumar (5231412004)">B. Tarun Kumar (5231412004)</option>
-                            <option value="P. John Subith (5231412089)">P. John Subith (5231412089)</option>
-                        </select>
+
+                    <div class="flex items-center gap-3">
+                        <div class="text-right">
+                            <span class="text-xs text-amber-400 font-semibold block">Due in 18h 42m</span>
+                            <span class="text-[11px] text-slate-400">Validator: Nihaal K.</span>
+                        </div>
+                        <button class="bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-semibold px-4 py-2.5 rounded-lg transition active:scale-95 whitespace-nowrap flex items-center gap-1.5">
+                            <i data-lucide="upload" class="w-3.5 h-3.5"></i>
+                            Submit Proof
+                        </button>
                     </div>
                 </div>
 
-                <!-- Submission Deadline (Time limit) -->
-                <div>
-                    <label class="block text-xs font-semibold text-slate-300 mb-1">
-                        Task Deadline (Date & Time) *
-                        <span class="text-[10px] text-cyan-400 font-normal">Tokens forfeit if late</span>
-                    </label>
-                    <input type="datetime-local" id="bet-deadline" required class="w-full bg-[#0b1120] border border-[#24324d] rounded-xl px-3.5 py-2 text-sm text-slate-100 focus:outline-none focus:border-cyan-500 transition">
-                </div>
+                <!-- Assignment Card 2 -->
+                <div class="bg-slate-900/80 border border-dark-border hover:border-cyan-900 rounded-xl p-4 transition flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div class="space-y-1">
+                        <div class="flex items-center gap-2">
+                            <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-emerald-950/70 border border-emerald-800 text-emerald-300">
+                                VERIFIED (+30 KT)
+                            </span>
+                            <span class="text-xs text-slate-400 font-mono">CS-502 • CN</span>
+                        </div>
+                        <h3 class="font-semibold text-slate-100 text-base">Subnetting & RIP Routing Simulation</h3>
+                        <p class="text-xs text-slate-400">Validated by 2 peers • Stakes released to liquid balance</p>
+                    </div>
 
-                <!-- Written Description -->
-                <div>
-                    <label class="block text-xs font-semibold text-slate-300 mb-1">Task Deliverable Description & Criteria</label>
-                    <textarea id="bet-description" rows="2" placeholder="Explain the assignment expectations and what the peer validator should check..." class="w-full bg-[#0b1120] border border-[#24324d] rounded-xl px-3.5 py-2 text-xs text-slate-100 focus:outline-none focus:border-cyan-500 transition"></textarea>
+                    <div class="flex items-center gap-3">
+                        <span class="text-xs font-medium text-emerald-400 bg-emerald-950/50 border border-emerald-800/50 px-3 py-1.5 rounded-lg flex items-center gap-1">
+                            <i data-lucide="check-circle" class="w-3.5 h-3.5"></i> Completed
+                        </span>
+                    </div>
                 </div>
+            </div>
+        </section>
 
-                <!-- File Attachment Input -->
-                <div class="border border-dashed border-[#24324d] rounded-xl p-3 bg-[#0b1120]/60">
-                    <label class="block text-xs font-semibold text-slate-300 mb-1">Attach Assignment PDF / Code Spec (Optional)</label>
-                    <input type="file" id="bet-initial-file" accept=".pdf,.doc,.docx,.zip,.py,.txt" onchange="handleFileSelect(this, 'create-file-name')" class="block w-full text-xs text-slate-400 file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-cyan-900/60 file:text-cyan-300 hover:file:bg-cyan-800 transition">
-                    <p id="create-file-name" class="text-[11px] text-cyan-400 mt-1 font-mono hidden"></p>
-                </div>
+    </main>
 
-                <!-- Submit Button -->
-                <div class="pt-2">
-                    <button type="submit" class="w-full bg-gradient-to-r from-cyan-600 to-teal-600 hover:from-cyan-500 hover:to-teal-500 text-white font-bold py-3 px-4 rounded-xl shadow-lg transition active:scale-[0.99] flex items-center justify-center gap-2">
-                        <i data-lucide="lock" class="w-4 h-4"></i>
-                        <span>Lock Escrow & Post Academic Bet</span>
-                    </button>
-                    <p class="text-[11px] text-center text-slate-400 mt-2">Karma tokens will be safely escrowed until verified.</p>
-                </div>
-            </form>
-        </div>
-    </div>
+    <!-- Footer Status Bar -->
+    <footer class="mt-8 border-t border-dark-border/60 py-4 text-center text-xs text-slate-400">
+        EduScore Incentive Engine • Built for Autonomous Coursework Tracking
+    </footer>
 
-    <!-- MODAL 2: Upload Task & Deliverable (Submission) -->
-    <div id="modal-submit-task" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm hidden flex items-center justify-center p-4">
-        <div class="bg-[#151f32] border border-[#24324d] rounded-2xl 
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
+
