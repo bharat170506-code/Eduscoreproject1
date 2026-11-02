@@ -10,21 +10,13 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <script>
         tailwind.config = {
-            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
-                        brand: {
-                            50: '#ecfeff',
-                            500: '#06b6d4',
-                            600: '#0891b2',
-                            900: '#164e63'
-                        },
                         dark: {
                             bg: '#0b1120',
                             card: '#151f32',
-                            border: '#24324d',
-                            hover: '#1e2d47'
+                            border: '#24324d'
                         }
                     }
                 }
@@ -32,281 +24,210 @@
         }
     </script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-        * {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            -webkit-tap-highlight-color: transparent;
-        }
-        ::-webkit-scrollbar {
-            width: 6px;
-            height: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #0b1120;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #24324d;
-            border-radius: 9999px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #0891b2;
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        * { font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparent; }
     </style>
 </head>
-<body class="bg-dark-bg text-slate-100 min-h-screen flex flex-col antialiased selection:bg-cyan-500 selection:text-white pb-16">
+<body class="bg-dark-bg text-slate-100 min-h-screen flex flex-col antialiased pb-16">
 
-    <!-- Top Navigation Header -->
-    <header class="sticky top-0 z-40 bg-dark-card/90 backdrop-blur-md border-b border-dark-border px-4 py-3 sm:px-6">
-        <div class="max-w-6xl mx-auto flex items-center justify-between gap-2">
+    <!-- Header -->
+    <header class="sticky top-0 z-30 bg-dark-card border-b border-dark-border px-4 py-3">
+        <div class="max-w-4xl mx-auto flex items-center justify-between">
             <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-600 to-teal-400 flex items-center justify-center font-bold text-white shadow-lg shadow-cyan-950/40 text-lg">
+                <div class="w-10 h-10 rounded-xl bg-cyan-600 flex items-center justify-center font-bold text-white text-lg shadow-md shadow-cyan-950/40">
                     E
                 </div>
                 <div>
                     <div class="flex items-center gap-2">
-                        <span class="font-bold text-base tracking-tight text-white">EduScore</span>
-                        <span class="text-[10px] font-semibold uppercase tracking-wider bg-cyan-950 text-cyan-300 border border-cyan-800/60 px-2 py-0.5 rounded-full">AI Validator Active</span>
+                        <span class="font-bold text-base text-white">EduScore</span>
+                        <span class="text-[10px] font-bold uppercase bg-cyan-950 text-cyan-300 border border-cyan-800 px-2 py-0.5 rounded-full">AI Validator Active</span>
                     </div>
-                    <p class="text-xs text-slate-400 hidden sm:block">Autonomous Coursework & Commitment Engine</p>
                 </div>
             </div>
-
-            <div class="flex items-center gap-3">
-                <div class="text-right">
+            <div class="flex items-center gap-2 text-right">
+                <div>
                     <div class="text-sm font-semibold text-slate-200">D. Bharat</div>
-                    <div class="text-xs text-cyan-400 font-mono tracking-tight">5241412017</div>
+                    <div class="text-xs text-cyan-400 font-mono">5241412017</div>
                 </div>
-                <div class="w-9 h-9 rounded-full bg-slate-800 border border-cyan-700/50 flex items-center justify-center font-bold text-xs text-cyan-300">
+                <div class="w-9 h-9 rounded-full bg-slate-800 border border-cyan-700 flex items-center justify-center font-bold text-xs text-cyan-300">
                     DB
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- Main Container -->
-    <main class="max-w-6xl mx-auto w-full px-4 sm:px-6 pt-6 flex-1 flex flex-col gap-6">
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto w-full px-4 pt-6 flex-1 flex flex-col gap-5">
 
-        <!-- Metrics Dashboard Cards -->
-        <section class="grid grid-cols-2 md:grid-cols-4 gap-3.5">
-            <div class="bg-dark-card border border-dark-border rounded-2xl p-4 flex flex-col justify-between hover:border-cyan-800/50 transition">
-                <div class="flex items-center justify-between text-slate-400 mb-1">
-                    <span class="text-xs font-medium">Karma Tokens (KT)</span>
-                    <i data-lucide="coins" class="w-4 h-4 text-amber-400"></i>
-                </div>
-                <div>
-                    <div class="text-2xl sm:text-3xl font-extrabold text-amber-300 tracking-tight flex items-baseline gap-1">
-                        <span id="liquidBalance">350</span> <span class="text-xs font-semibold text-amber-500">KT</span>
-                    </div>
-                    <p class="text-[11px] text-slate-400 mt-0.5">Liquid balance</p>
-                </div>
+        <!-- Stat Cards -->
+        <section class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            <div class="bg-dark-card border border-dark-border rounded-xl p-3.5">
+                <div class="text-xs text-slate-400">Karma Tokens (KT)</div>
+                <div class="text-2xl font-bold text-amber-300 mt-1"><span id="liquidBal">350</span> <span class="text-xs text-amber-500">KT</span></div>
+                <div class="text-[10px] text-slate-500">Liquid balance</div>
             </div>
-
-            <div class="bg-dark-card border border-dark-border rounded-2xl p-4 flex flex-col justify-between hover:border-cyan-800/50 transition">
-                <div class="flex items-center justify-between text-slate-400 mb-1">
-                    <span class="text-xs font-medium">Tokens in Escrow</span>
-                    <i data-lucide="lock" class="w-4 h-4 text-cyan-400"></i>
-                </div>
-                <div>
-                    <div class="text-2xl sm:text-3xl font-extrabold text-cyan-300 tracking-tight flex items-baseline gap-1">
-                        <span id="escrowBalance">50</span> <span class="text-xs font-semibold text-cyan-500">KT</span>
-                    </div>
-                    <p class="text-[11px] text-slate-400 mt-0.5">Locked in active bets</p>
-                </div>
+            <div class="bg-dark-card border border-dark-border rounded-xl p-3.5">
+                <div class="text-xs text-slate-400">Tokens in Escrow</div>
+                <div class="text-2xl font-bold text-cyan-300 mt-1"><span id="escrowBal">50</span> <span class="text-xs text-cyan-500">KT</span></div>
+                <div class="text-[10px] text-slate-500">Locked in deadlines</div>
             </div>
-
-            <div class="bg-dark-card border border-dark-border rounded-2xl p-4 flex flex-col justify-between hover:border-cyan-800/50 transition">
-                <div class="flex items-center justify-between text-slate-400 mb-1">
-                    <span class="text-xs font-medium">Academic Rep</span>
-                    <i data-lucide="award" class="w-4 h-4 text-emerald-400"></i>
-                </div>
-                <div>
-                    <div class="text-2xl sm:text-3xl font-extrabold text-emerald-300 tracking-tight" id="repRating">
-                        94%
-                    </div>
-                    <p class="text-[11px] text-slate-400 mt-0.5">Completion score</p>
-                </div>
+            <div class="bg-dark-card border border-dark-border rounded-xl p-3.5">
+                <div class="text-xs text-slate-400">Academic Rep</div>
+                <div class="text-2xl font-bold text-emerald-300 mt-1" id="repScore">94%</div>
+                <div class="text-[10px] text-slate-500">Completion score</div>
             </div>
-
-            <div class="bg-dark-card border border-dark-border rounded-2xl p-4 flex flex-col justify-between hover:border-cyan-800/50 transition">
-                <div class="flex items-center justify-between text-slate-400 mb-1">
-                    <span class="text-xs font-medium">Active Tasks</span>
-                    <i data-lucide="clock" class="w-4 h-4 text-indigo-400"></i>
-                </div>
-                <div>
-                    <div class="text-2xl sm:text-3xl font-extrabold text-indigo-300 tracking-tight flex items-baseline gap-1">
-                        <span id="activeCount">1</span> <span class="text-xs font-semibold text-slate-400">pending</span>
-                    </div>
-                    <p class="text-[11px] text-slate-400 mt-0.5">Awaiting submission</p>
-                </div>
+            <div class="bg-dark-card border border-dark-border rounded-xl p-3.5">
+                <div class="text-xs text-slate-400">Active Tasks</div>
+                <div class="text-2xl font-bold text-indigo-300 mt-1" id="activeCount">1</div>
+                <div class="text-[10px] text-slate-500">In progress</div>
             </div>
         </section>
 
-        <!-- Primary Action Callouts -->
-        <section class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-            <button onclick="openStakeModal()" class="w-full bg-gradient-to-r from-cyan-600 to-teal-500 hover:from-cyan-500 hover:to-teal-400 text-white font-semibold py-3.5 px-4 rounded-xl shadow-lg shadow-cyan-950/50 flex items-center justify-center gap-2 transition active:scale-[0.99]">
-                <i data-lucide="plus-circle" class="w-5 h-5"></i>
-                Create Academic Bet (Set Deadline & Stake KT)
-            </button>
-            <div class="w-full bg-dark-card border border-dark-border rounded-xl px-4 py-3 flex items-center justify-between">
-                <div class="flex items-center gap-3">
-                    <div class="w-9 h-9 rounded-lg bg-cyan-950/70 border border-cyan-800 flex items-center justify-center text-cyan-400">
-                        <i data-lucide="bot" class="w-5 h-5"></i>
-                    </div>
-                    <div>
-                        <div class="text-sm font-semibold text-slate-200">AI Peer Validator</div>
-                        <div class="text-xs text-slate-400">Evaluates proof & unlocks stakes autonomously</div>
-                    </div>
+        <!-- Create Stake Action Button -->
+        <button id="openStakeBtn" type="button" class="w-full bg-cyan-600 hover:bg-cyan-500 active:bg-cyan-700 text-white font-bold py-3.5 px-4 rounded-xl shadow-lg flex items-center justify-center gap-2 cursor-pointer transition">
+            <i data-lucide="plus-circle" class="w-5 h-5"></i>
+            Create Academic Bet (Set Deadline & Stake KT)
+        </button>
+
+        <!-- AI Status Badge -->
+        <div class="bg-dark-card border border-dark-border rounded-xl p-3.5 flex items-center justify-between">
+            <div class="flex items-center gap-2.5">
+                <div class="w-8 h-8 rounded-lg bg-cyan-950 border border-cyan-800 flex items-center justify-center text-cyan-400">
+                    <i data-lucide="bot" class="w-4 h-4"></i>
                 </div>
-                <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-950 border border-emerald-800 text-emerald-400">
-                    ONLINE
-                </span>
+                <div>
+                    <div class="text-sm font-semibold text-slate-200">AI Peer Validator</div>
+                    <div class="text-xs text-slate-400">Evaluates proof & unlocks stakes automatically</div>
+                </div>
+            </div>
+            <span class="text-[10px] font-bold bg-emerald-950 text-emerald-400 border border-emerald-800 px-2 py-0.5 rounded">ONLINE</span>
+        </div>
+
+        <!-- Task Commitments List -->
+        <section class="bg-dark-card border border-dark-border rounded-xl overflow-hidden flex-1">
+            <div class="p-3.5 border-b border-dark-border bg-slate-900/60 flex items-center justify-between">
+                <span class="text-xs font-bold uppercase tracking-wider text-slate-300">My Commitments & Live Deadlines</span>
+                <span class="text-[11px] text-slate-400">Auto-evaluated</span>
+            </div>
+            <div id="tasksContainer" class="p-4 flex flex-col gap-3">
+                <!-- Dynamically injected -->
             </div>
         </section>
-
-        <!-- Tasks Section -->
-        <section class="bg-dark-card border border-dark-border rounded-2xl overflow-hidden flex-1 flex flex-col">
-            <div class="p-4 border-b border-dark-border bg-slate-900/60 flex items-center justify-between">
-                <div class="flex items-center gap-2">
-                    <i data-lucide="list-todo" class="w-4 h-4 text-cyan-400"></i>
-                    <h2 class="text-sm font-semibold tracking-wider text-slate-300 uppercase">My Commitments & Live Deadlines</h2>
-                </div>
-                <span class="text-xs text-slate-400">Auto-evaluated upon proof submission</span>
-            </div>
-
-            <!-- Task List Container -->
-            <div id="taskList" class="p-4 sm:p-6 flex flex-col gap-4">
-                <!-- Tasks render here via JS -->
-            </div>
-        </section>
-
     </main>
 
-    <!-- Create Stake Modal -->
-    <div id="stakeModal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-dark-card border border-dark-border rounded-2xl max-w-md w-full p-6 shadow-2xl relative">
-            <h3 class="text-lg font-bold text-white mb-1 flex items-center gap-2">
-                <i data-lucide="shield-alert" class="w-5 h-5 text-cyan-400"></i> New Academic Stake
-            </h3>
-            <p class="text-xs text-slate-400 mb-4">Set your deliverable and deadline. The AI validator will verify your submission.</p>
+    <!-- CREATE STAKE MODAL -->
+    <div id="stakeModal" class="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4" style="display: none;">
+        <div class="bg-dark-card border border-dark-border rounded-2xl max-w-md w-full p-5 shadow-2xl">
+            <h3 class="text-base font-bold text-white mb-1">Set New Academic Bet</h3>
+            <p class="text-xs text-slate-400 mb-4">Lock tokens against a concrete assignment deadline.</p>
 
-            <form id="stakeForm" onsubmit="handleCreateStake(event)" class="space-y-4">
+            <form id="createStakeForm" class="space-y-3.5">
                 <div>
-                    <label class="block text-xs font-semibold text-slate-300 mb-1">Course Code & Topic</label>
-                    <input type="text" id="taskCourse" required placeholder="e.g., CS-504 • Apriori Algorithm Report" class="w-full bg-slate-900 border border-dark-border rounded-xl px-3.5 py-2.5 text-sm text-slate-100 focus:outline-none focus:border-cyan-500">
+                    <label class="block text-xs font-semibold text-slate-300 mb-1">Subject & Topic</label>
+                    <input type="text" id="inputTitle" required placeholder="e.g., CS-504 • Data Mining FP-Tree" class="w-full bg-slate-900 border border-dark-border rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-cyan-500">
                 </div>
                 <div>
-                    <label class="block text-xs font-semibold text-slate-300 mb-1">Task Deliverable Summary</label>
-                    <textarea id="taskDesc" required rows="2" placeholder="Describe the expected proof (e.g., Python code snippet + output screenshot)" class="w-full bg-slate-900 border border-dark-border rounded-xl px-3.5 py-2.5 text-sm text-slate-100 focus:outline-none focus:border-cyan-500"></textarea>
+                    <label class="block text-xs font-semibold text-slate-300 mb-1">Deliverable Description</label>
+                    <input type="text" id="inputDesc" required placeholder="e.g., Python code implementation + output graph" class="w-full bg-slate-900 border border-dark-border rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-cyan-500">
                 </div>
                 <div class="grid grid-cols-2 gap-3">
                     <div>
                         <label class="block text-xs font-semibold text-slate-300 mb-1">Stake Tokens (KT)</label>
-                        <input type="number" id="taskStake" required min="10" max="200" value="50" class="w-full bg-slate-900 border border-dark-border rounded-xl px-3.5 py-2.5 text-sm text-slate-100 focus:outline-none focus:border-cyan-500">
+                        <input type="number" id="inputStake" required min="10" max="200" value="50" class="w-full bg-slate-900 border border-dark-border rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-cyan-500">
                     </div>
                     <div>
-                        <label class="block text-xs font-semibold text-slate-300 mb-1">Target Deadline</label>
-                        <input type="datetime-local" id="taskDeadline" required class="w-full bg-slate-900 border border-dark-border rounded-xl px-3 py-2 text-xs text-slate-100 focus:outline-none focus:border-cyan-500">
+                        <label class="block text-xs font-semibold text-slate-300 mb-1">Select Deadline</label>
+                        <input type="datetime-local" id="inputDeadline" required class="w-full bg-slate-900 border border-dark-border rounded-lg px-2 py-2 text-xs text-white focus:outline-none focus:border-cyan-500">
                     </div>
                 </div>
 
                 <div class="flex items-center justify-end gap-2 pt-2">
-                    <button type="button" onclick="closeStakeModal()" class="px-4 py-2.5 text-xs font-semibold text-slate-400 hover:text-slate-200">Cancel</button>
-                    <button type="submit" class="px-5 py-2.5 bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-bold rounded-xl transition">Lock Commitment</button>
+                    <button type="button" id="closeStakeBtn" class="px-3.5 py-2 text-xs font-semibold text-slate-400 hover:text-white">Cancel</button>
+                    <button type="submit" class="px-4 py-2 bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-bold rounded-lg transition">Stake Tokens</button>
                 </div>
             </form>
         </div>
     </div>
 
-    <!-- AI Validation Modal -->
-    <div id="submissionModal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-dark-card border border-dark-border rounded-2xl max-w-lg w-full p-6 shadow-2xl relative">
-            <h3 class="text-lg font-bold text-white mb-1 flex items-center gap-2">
-                <i data-lucide="bot" class="w-5 h-5 text-cyan-400"></i> AI Validator Submission
-            </h3>
-            <p class="text-xs text-slate-400 mb-4" id="subModalDesc">Submit your work proof below. The AI validator will score your submission.</p>
+    <!-- AI SUBMIT PROOF MODAL -->
+    <div id="proofModal" class="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4" style="display: none;">
+        <div class="bg-dark-card border border-dark-border rounded-2xl max-w-md w-full p-5 shadow-2xl">
+            <h3 class="text-base font-bold text-white mb-1">AI Peer Validator Submission</h3>
+            <p class="text-xs text-slate-400 mb-3" id="proofTaskName">Upload proof for validation</p>
 
-            <form id="submissionForm" onsubmit="handleValidationSubmission(event)" class="space-y-4">
-                <input type="hidden" id="subTaskId">
+            <form id="proofForm" class="space-y-3">
+                <input type="hidden" id="proofTaskId">
                 <div>
-                    <label class="block text-xs font-semibold text-slate-300 mb-1">Submission Proof / Code / Explanation</label>
-                    <textarea id="subProof" required rows="5" placeholder="Paste your implementation details, code logic, or repository link here..." class="w-full bg-slate-900 border border-dark-border rounded-xl p-3 text-xs font-mono text-slate-200 focus:outline-none focus:border-cyan-500"></textarea>
+                    <label class="block text-xs font-semibold text-slate-300 mb-1">Assignment Proof (Code / Output / Report)</label>
+                    <textarea id="proofText" rows="4" required placeholder="Paste your implementation details or repository link here (minimum 20 characters)..." class="w-full bg-slate-900 border border-dark-border rounded-lg p-2.5 text-xs text-white focus:outline-none focus:border-cyan-500 font-mono"></textarea>
                 </div>
 
-                <!-- Live Evaluation Status -->
-                <div id="aiEvaluationBox" class="hidden p-3 rounded-xl border border-cyan-800/60 bg-cyan-950/40 text-xs">
-                    <div class="flex items-center gap-2 text-cyan-300 font-semibold mb-1">
-                        <i data-lucide="loader-2" class="w-4 h-4 animate-spin"></i>
-                        <span>AI Peer Validator is analyzing your submission...</span>
+                <div id="aiLoader" class="p-3 bg-cyan-950/60 border border-cyan-800 rounded-lg text-xs" style="display: none;">
+                    <div class="text-cyan-300 font-semibold flex items-center gap-2">
+                        <span>Evaluating submission against requirements...</span>
                     </div>
-                    <p class="text-slate-400 text-[11px]" id="aiStatusMessage">Evaluating completeness, constraints, and deadline adherence.</p>
                 </div>
 
                 <div class="flex items-center justify-end gap-2 pt-2">
-                    <button type="button" onclick="closeSubmissionModal()" class="px-4 py-2.5 text-xs font-semibold text-slate-400 hover:text-slate-200">Cancel</button>
-                    <button type="submit" id="submitProofBtn" class="px-5 py-2.5 bg-gradient-to-r from-cyan-600 to-teal-500 hover:from-cyan-500 hover:to-teal-400 text-white text-xs font-bold rounded-xl transition flex items-center gap-1.5">
-                        <i data-lucide="check-circle" class="w-4 h-4"></i>
-                        Run AI Validation
-                    </button>
+                    <button type="button" id="closeProofBtn" class="px-3.5 py-2 text-xs font-semibold text-slate-400 hover:text-white">Cancel</button>
+                    <button type="submit" id="runAiBtn" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold rounded-lg transition">Run AI Evaluation</button>
                 </div>
             </form>
         </div>
     </div>
 
-    <!-- Script: Logic, Deadlines & AI Validator -->
+    <!-- Application Script -->
     <script>
-        // Default seed data
+        // App State
         let state = {
             liquid: 350,
             escrow: 50,
             tasks: [
                 {
-                    id: 1,
+                    id: 101,
                     title: "CS-504 • Apriori Algorithm & FP-Tree Comparison Report",
                     desc: "Target Deliverable: Implementation notebook + PDF Analysis summary",
                     stake: 50,
                     deadline: new Date(Date.now() + 18 * 3600 * 1000 + 42 * 60 * 1000).toISOString(),
-                    completed: false,
-                    validatorNotes: null
+                    completed: false
                 }
             ]
         };
 
-        // Load saved state if present
-        if (localStorage.getItem('eduscore_state')) {
-            try {
-                state = JSON.parse(localStorage.getItem('eduscore_state'));
-            } catch (e) {
-                console.error("Failed to parse state", e);
-            }
+        // Sync with browser storage
+        const saved = localStorage.getItem('eduscore_data');
+        if (saved) {
+            try { state = JSON.parse(saved); } catch(err) {}
         }
 
-        function saveState() {
-            localStorage.setItem('eduscore_state', JSON.stringify(state));
-            render();
+        function persist() {
+            localStorage.setItem('eduscore_data', JSON.stringify(state));
+            renderTasks();
         }
 
-        function openStakeModal() {
-            // Set default deadline to 24h from now
-            const defaultDate = new Date(Date.now() + 24 * 3600 * 1000);
-            const tzoffset = defaultDate.getTimezoneOffset() * 60000;
-            const localISOTime = (new Date(defaultDate - tzoffset)).toISOString().slice(0, 16);
-            document.getElementById('taskDeadline').value = localISOTime;
-            document.getElementById('stakeModal').classList.remove('hidden');
-        }
+        // Modal Controllers
+        const stakeModal = document.getElementById('stakeModal');
+        const proofModal = document.getElementById('proofModal');
+        const openStakeBtn = document.getElementById('openStakeBtn');
+        const closeStakeBtn = document.getElementById('closeStakeBtn');
+        const closeProofBtn = document.getElementById('closeProofBtn');
 
-        function closeStakeModal() {
-            document.getElementById('stakeModal').classList.add('hidden');
-        }
+        openStakeBtn.addEventListener('click', () => {
+            const nextDay = new Date(Date.now() + 24 * 3600 * 1000);
+            const tzOffset = nextDay.getTimezoneOffset() * 60000;
+            document.getElementById('inputDeadline').value = (new Date(nextDay - tzOffset)).toISOString().slice(0, 16);
+            stakeModal.style.display = 'flex';
+        });
 
-        function handleCreateStake(e) {
+        closeStakeBtn.addEventListener('click', () => stakeModal.style.display = 'none');
+        closeProofBtn.addEventListener('click', () => proofModal.style.display = 'none');
+
+        // Create Stake Submission
+        document.getElementById('createStakeForm').addEventListener('submit', (e) => {
             e.preventDefault();
-            const title = document.getElementById('taskCourse').value.trim();
-            const desc = document.getElementById('taskDesc').value.trim();
-            const stake = parseInt(document.getElementById('taskStake').value, 10);
-            const deadline = new Date(document.getElementById('taskDeadline').value).toISOString();
-
+            const stake = parseInt(document.getElementById('inputStake').value, 10);
             if (stake > state.liquid) {
-                alert("Insufficient liquid Karma Tokens to stake this amount!");
+                alert("You don't have enough liquid KT!");
                 return;
             }
 
@@ -314,65 +235,128 @@
             state.escrow += stake;
             state.tasks.unshift({
                 id: Date.now(),
-                title,
-                desc,
-                stake,
-                deadline,
-                completed: false,
-                validatorNotes: null
+                title: document.getElementById('inputTitle').value.trim(),
+                desc: document.getElementById('inputDesc').value.trim(),
+                stake: stake,
+                deadline: new Date(document.getElementById('inputDeadline').value).toISOString(),
+                completed: false
             });
 
-            saveState();
-            closeStakeModal();
-            document.getElementById('stakeForm').reset();
-        }
+            stakeModal.style.display = 'none';
+            document.getElementById('createStakeForm').reset();
+            persist();
+        });
 
-        function openSubmissionModal(taskId) {
+        // Open AI Review Dialog
+        window.startProofSubmission = function(taskId) {
             const task = state.tasks.find(t => t.id === taskId);
             if (!task) return;
+            document.getElementById('proofTaskId').value = task.id;
+            document.getElementById('proofTaskName').textContent = `Target: ${task.title}`;
+            document.getElementById('proofText').value = '';
+            document.getElementById('aiLoader').style.display = 'none';
+            document.getElementById('runAiBtn').disabled = false;
+            proofModal.style.display = 'flex';
+        };
 
-            document.getElementById('subTaskId').value = task.id;
-            document.getElementById('subModalDesc').textContent = `Submit proof for: "${task.title}". The AI peer validator will verify completion.`;
-            document.getElementById('aiEvaluationBox').classList.add('hidden');
-            document.getElementById('submitProofBtn').disabled = false;
-            document.getElementById('submissionModal').classList.remove('hidden');
-            lucide.createIcons();
-        }
-
-        function closeSubmissionModal() {
-            document.getElementById('submissionModal').classList.add('hidden');
-            document.getElementById('subProof').value = "";
-        }
-
-        // Automated AI Peer Validation
-        function handleValidationSubmission(e) {
+        // Run AI Validation
+        document.getElementById('proofForm').addEventListener('submit', (e) => {
             e.preventDefault();
-            const taskId = parseInt(document.getElementById('subTaskId').value, 10);
-            const proofText = document.getElementById('subProof').value.trim();
-            const evalBox = document.getElementById('aiEvaluationBox');
-            const submitBtn = document.getElementById('submitProofBtn');
-            const statusMsg = document.getElementById('aiStatusMessage');
+            const proof = document.getElementById('proofText').value.trim();
+            const taskId = parseInt(document.getElementById('proofTaskId').value, 10);
 
-            evalBox.classList.remove('hidden');
-            submitBtn.disabled = true;
+            if (proof.length < 20) {
+                alert("AI Validation Error: Proof is too short. Please provide a detailed answer or link (at least 20 chars).");
+                return;
+            }
 
-            // Simulating real-time AI validation reasoning
-            statusMsg.textContent = "Analyzing proof structure, length, and technical requirements...";
+            const loader = document.getElementById('aiLoader');
+            const runBtn = document.getElementById('runAiBtn');
+            loader.style.display = 'block';
+            runBtn.disabled = true;
 
             setTimeout(() => {
                 const task = state.tasks.find(t => t.id === taskId);
-                if (!task) return;
+                if (task) {
+                    task.completed = true;
+                    state.escrow -= task.stake;
+                    state.liquid += (task.stake + 20); // releases escrow + incentive
+                }
+                proofModal.style.display = 'none';
+                persist();
+            }, 1200);
+        });
 
-                // Validation logic criteria
-                const isAdequate = proofText.length >= 30;
+        // Time calculator
+        function calcRemaining(deadlineStr) {
+            const diff = new Date(deadlineStr) - new Date();
+            if (diff <= 0) return { label: "Expired", expired: true };
+            const h = Math.floor(diff / (1000 * 60 * 60));
+            const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            return { label: `Due in ${h}h ${m}m`, expired: false };
+        }
 
-                if (isAdequate) {
-                    statusMsg.textContent = "Validation Successful: Criteria met. Releasing escrow and awarding +20 KT peer incentive!";
-                    
-                    setTimeout(() => {
-                        task.completed = true;
-                        task.validatorNotes = `Approved by AI Validator: Comprehensive proof provided (${proofText.length} chars).`;
-                        state.escrow -= task.stake;
-                        state.liquid += (task.stake + 20); // Return stake + reward
+        // Render UI
+        function renderTasks() {
+            document.getElementById('liquidBal').textContent = state.liquid;
+            document.getElementById('escrowBal').textContent = state.escrow;
 
-            
+            const pending = state.tasks.filter(t => !t.completed);
+            document.getElementById('activeCount').textContent = pending.length;
+
+            const total = state.tasks.length;
+            const rep = total > 0 ? Math.round((state.tasks.filter(t => t.completed).length / total) * 100) : 94;
+            document.getElementById('repScore').textContent = `${rep}%`;
+
+            const container = document.getElementById('tasksContainer');
+            container.innerHTML = '';
+
+            state.tasks.forEach(task => {
+                const row = document.createElement('div');
+                row.className = "bg-slate-900 border border-dark-border rounded-xl p-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-3";
+
+                const time = calcRemaining(task.deadline);
+
+                if (task.completed) {
+                    row.innerHTML = `
+                        <div>
+                            <div class="flex items-center gap-2 mb-1">
+                                <span class="text-[10px] font-bold bg-emerald-950 text-emerald-300 border border-emerald-800 px-2 py-0.5 rounded">PASSED & VERIFIED</span>
+                                <span class="text-xs text-slate-400 font-mono">+${task.stake + 20} KT UNLOCKED</span>
+                            </div>
+                            <div class="text-sm font-semibold text-white">${task.title}</div>
+                            <div class="text-xs text-slate-400">${task.desc}</div>
+                        </div>
+                        <div>
+                            <span class="text-xs text-emerald-400 bg-emerald-950/60 border border-emerald-800 px-3 py-1.5 rounded-lg inline-block">Validated by AI</span>
+                        </div>
+                    `;
+                } else {
+                    row.innerHTML = `
+                        <div>
+                            <div class="flex items-center gap-2 mb-1">
+                                <span class="text-[10px] font-bold bg-amber-950 text-amber-300 border border-amber-800 px-2 py-0.5 rounded">${task.stake} KT STAKED</span>
+                                <span class="text-xs ${time.expired ? 'text-rose-400 font-bold' : 'text-amber-400'}">${time.label}</span>
+                            </div>
+                            <div class="text-sm font-semibold text-white">${task.title}</div>
+                            <div class="text-xs text-slate-400">${task.desc}</div>
+                        </div>
+                        <div>
+                            <button onclick="startProofSubmission(${task.id})" type="button" class="bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-semibold px-4 py-2 rounded-lg cursor-pointer transition">
+                                Submit Proof
+                            </button>
+                        </div>
+                    `;
+                }
+
+                container.appendChild(row);
+            });
+
+            if (window.lucide) { lucide.createIcons(); }
+        }
+
+        renderTasks();
+    </script>
+</body>
+</html>
+
